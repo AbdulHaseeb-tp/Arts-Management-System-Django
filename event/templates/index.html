@@ -1,0 +1,25 @@
+{% extends "adminlte/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} My Index Page {% endblock title %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12"> 
+      <h1>Learning Forms</h1>  
+      
+      <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+
+         {{form}}
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+
+    </div>     
+</div>
+
+{% endblock content %}
+

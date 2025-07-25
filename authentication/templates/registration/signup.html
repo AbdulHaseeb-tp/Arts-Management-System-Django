@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %} SignUp Page {% endblock title %}
+
+
+{% block content %}
+
+<form action="" method="post">
+
+  {% csrf_token %}
+
+  <div class="container d-flex justify-content-center">
+        <div class="card-body" >
+            <div class="row">
+                <div class="col-sm-6">
+                    <hr>
+
+                    <div class="form-group mt-2">
+                      <label for="id_user_name">User Name</label> 
+                      <input class="form-control" type="text" placeholder="User Name" name="username" id="id_username" required value={{ request.POST.username |default:"" }}>
+                      <small class="form-text text-danger">{{ errors.username }}</small>
+                    </div>
+
+                    <div class="form-group mt-2">
+                      <label for="id_first_name">First Name</label> 
+                      <input class="form-control" type="text" placeholder="First Name" name="first_name" id="id_firstname" required  value={{ request.POST.first_name |default:"" }}>
+                      <small class="form-text text-danger">{{ errors.first_name }}</small>
+                    </div>
+
+                    <div class="form-group mt-2">
+                      <label for="id_last_name">Last Name</label> 
+                      <input class="form-control" type="text" placeholder="Last Name" name="last_name" id="id_Lastname" value={{ request.POST.last_name |default:"" }}>
+                    </div>
+
+                    <div class="form-group mt-2">
+                      <label for="id_Password">Password</label>
+                      <input class="form-control" type="password" placeholder="Password" name="password1" id="id_password" required>
+                      <small class="form-text text-danger">{{ errors.password1 }}</small>
+                    </div>
+
+                    <div class="form-group mt-2">
+                      <label for="id_confirm_Password">Confirm Password</label>
+                      <input class="form-control" type="password" placeholder="Confirm Password" name="password2" id="id_confirm_Password" required>
+                      <small class="form-text text-danger">{{ errors.password2 }}</small>
+                    </div>
+
+                    <div class="form-group mt-2">
+                      <label for="id_email">Email</label>
+                      <input class="form-control" type="email" placeholder="Email ID" name="email" id="id_email" required value={{ request.POST.email |default:"" }}>
+                      <small class="form-text text-danger">{{ errors.email }}</small>
+                    </div>
+
+                    <div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> 
+                      <a href="#" class="terms">Terms & Conditions</a> 
+
+                      </div> 
+                        <button type="submit" class="btn btn-primary btn-block confirm-button">Confirm</button>
+                      </div>
+
+                    </div>
+                </div>
+            </div>
+      </div>           
+  </div>
+
+</form>
+
+<style>
+  .card{
+    background-color:#fff;
+    border:none;
+    border-radius: 12px
+  }
+  .form-control{
+    margin-top: 10px;
+    height: 48px;
+    border: 2px solid #eee;
+    border-radius: 10px
+  }
+  .form-control:focus{
+    box-shadow: none;
+    border: 2px solid #039BE5
+  }
+  .agree-text{
+    font-size: 12px
+  }
+  .terms{
+    font-size: 12px;
+    text-decoration: none;
+    color: #039BE5
+  }
+  .confirm-button{
+    height: 50px;
+    border-radius: 10px
+  }
+</style>
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends 'adminlte/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Suggestion {% endblock %}
+
+{% block content %}
+
+
+        <div class="box">
+            <div class="box-header">
+                <h3>Suggestion Box</h3>
+            </div>
+            <div class="">
+                <a href="{% url 'suggestion-box-create' %}" class="btn btn-link"> New Suggestion??</a>
+            </div>
+
+            <div class="box-body">
+                <div class="row">
+                    <table class="table table-stripped">
+                        <tr>
+                            <th>#</th>
+                            <th>Complaint</th>
+                            <th>Event</th>
+                            <th>Category</th>
+                            <th>Created Date</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for suggestion in object_list %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ suggestion.description }}</td>
+                            <td>{{ suggestion.event }}</td>
+                            <td>{{ suggestion.category }}</td>
+                            <td>{{ suggestion.created_at }}</td>
+                            <td><a href="{% url 'suggestion-box-update' pk=suggestion.pk %}" class="btn btn sm btn-primary">Edit</a></td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="100%"> No Suggestions you Entered</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

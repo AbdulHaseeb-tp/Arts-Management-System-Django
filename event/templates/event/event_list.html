@@ -1,0 +1,45 @@
+{% extends "adminlte/base.html" %}
+
+{% block title %} My Index Page {% endblock title %}
+
+
+{% block content %}
+
+<div class="row">
+
+    {% for event in events %}
+    <div class="card col-sm-4 mb-3">
+        <div class="card-header  bg-success text-white mt-3">
+            Registrations OPEN!!
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">{{event.title}}</h3>
+            <p class="card-text">{{ event.description | default:"--" }}</p>
+
+            <table class="table">
+            <thead class="thead-light">
+                <tr class="table-active">
+                {% comment %} <th scope="col">#</th> {% endcomment %}
+                <th scope="col">Registration Close</th>
+                <th scope="col">Event Start</th>
+                <th scope="col">Event End</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-warning">
+                {% comment %} <th scope="row">1</th> {% endcomment %}
+                <td>{{event.registration_close_at}}</td>
+                <td>{{event.start_at}}</td>
+                <td>{{event.ends_at}}</td>
+                </tr>
+            </tbody>
+            </table>
+
+            <a href="{% url 'event-detail' pk=event.id %}" class="btn btn-primary">REGISTER NOW</a>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock content %}
+
